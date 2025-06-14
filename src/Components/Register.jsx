@@ -1,21 +1,68 @@
 import Lottie from "lottie-react";
-import React from "react";
+import React, { use, useState } from "react";
 import RegisterLottie from "../assets/Lotties/Register.json";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../Provider/AuthContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
 
+  const [error, setError] = useState("");
 
-    const handleRegister = e => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const photo = form.photo.files[0];
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log({name, photo, email, password});
+  const { createUser, updateUser, setUser } = use(AuthContext);
 
-    }
+  const navigate = useNavigate();
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log({ name, photo, email, password });
+
+    // create user
+   createUser(email, password)
+         .then((result) => {
+           const user = result.user;
+           // console.log(user);
+           Swal.fire({
+             position: "top-end",
+             icon: "success",
+             title: "Created account successfully!",
+             showConfirmButton: false,
+             timer: 1500,
+           });
+           // setUser(user);
+           updateUser({ displayName: name, photoURL: photo })
+             .then(() => {
+               setUser({ ...user, displayName: name, photoURL: photo });
+               navigate("/");
+             })
+             .catch((error) => {
+               setError(error.message);
+               setUser(user);
+               Swal.fire({
+                 position: "top-end",
+                 icon: "error",
+                 title: `${error.message}`,
+                 showConfirmButton: false,
+                 timer: 1500,
+               });
+             });
+         })
+         .catch((error) => {
+           setError(error.message);
+           Swal.fire({
+             position: "top-end",
+             icon: "error",
+             title: `${error.message}`,
+             showConfirmButton: false,
+             timer: 1500,
+           });
+         });
+     };
 
   return (
     <div className="hero bg-[#E6D3B3] min-h-screen">
@@ -39,9 +86,14 @@ const Register = () => {
                 />
 
                 {/* Photo */}
-                <label className="label">Upload a photo</label>
-                <input type="file" name="photo" className="file-input" required />
-                <p className="label">Max size 2MB</p>
+                <label className="label">PhotoURL</label>
+                <input
+                  type="text"
+                  name="photoURL"
+                  className="input"
+                  placeholder="Enter your Photo URL"
+                  required
+                />
 
                 {/* Email */}
                 <label className="label">Email</label>
