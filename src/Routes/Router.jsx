@@ -18,6 +18,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/allArtifacts",
+                loader: () => fetch("http://localhost:3000/artifacts"),
                 element: <AllArtifacts></AllArtifacts>
             },
             {
