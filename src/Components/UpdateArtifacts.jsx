@@ -1,47 +1,65 @@
 import React, { use } from "react";
 import { AuthContext } from "../Provider/AuthContext";
+import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router";
 
-const AddArtifacts = () => {
+const UpdateArtifacts = () => {
+  const {
+    _id,
+    artifactName,
+    artifactImage,
+    artifactType,
+    historicalContext,
+    shortDescription,
+    createdAt,
+    discoveredAt,
+    discoveredBy,
+    presentLocation,
+  } = useLoaderData();
+
   const { user } = use(AuthContext);
 
   const navigate = useNavigate();
 
-  const handleAddArtifacts = (e) => {
+  const handleUpdateArtifact = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const newArtifact = Object.fromEntries(formData.entries());
+    const UpdateArtifacts = Object.fromEntries(formData.entries());
 
-    // send it to db
-
-    fetch("http://localhost:3000/artifacts", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newArtifact)
+    fetch(`http://localhost:3000/artifacts/${_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(UpdateArtifacts),
     })
-    .then((res) => res.json())
-    .then((data) => {
-        if(data.insertedId){
-            Swal.fire({
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Artifacts added successfully !",
-            showConfirmButton: false,
+            title: "Artifact updated successfully!",
+            showCancelButton: false,
             timer: 1500,
           });
-          navigate("/allArtifacts");
+          navigate("/myArtifacts");
+        } else if (data.modifiedCount === 0) {
+          Swal.fire({
+            icon: "info",
+            title: "No changes made",
+            text: "The artifact details are the same as before.",
+            confirmButtonText: "OK",
+          });
         }
-    })
+      });
   };
 
   return (
     <div className="container mx-auto">
       <form
-        onSubmit={handleAddArtifacts}
+        onSubmit={handleUpdateArtifact}
         className="max-w-3xl mx-auto p-6 bg-white shadow-xl rounded-2xl mt-10 space-y-6"
       >
         <h2 className="text-2xl font-bold text-gray-800">Add New Artifact</h2>
@@ -54,6 +72,7 @@ const AddArtifacts = () => {
             <input
               type="text"
               name="artifactName"
+              defaultValue={artifactName}
               className="mt-1 w-full border rounded-md px-3 py-2"
               required
             />
@@ -66,6 +85,7 @@ const AddArtifacts = () => {
             <input
               type="url"
               name="artifactImage"
+              defaultValue={artifactImage}
               className="mt-1 w-full border rounded-md px-3 py-2"
               required
             />
@@ -77,6 +97,7 @@ const AddArtifacts = () => {
             </label>
             <select
               name="artifactType"
+              defaultValue={artifactType}
               className="mt-1 w-full border rounded-md px-3 py-2"
             >
               <option value="Tools">Tools</option>
@@ -93,6 +114,7 @@ const AddArtifacts = () => {
             </label>
             <input
               type="text"
+              defaultValue={createdAt}
               name="createdAt"
               placeholder="e.g. 100 BC"
               className="mt-1 w-full border rounded-md px-3 py-2"
@@ -106,6 +128,7 @@ const AddArtifacts = () => {
             </label>
             <input
               type="text"
+              defaultValue={discoveredAt}
               name="discoveredAt"
               placeholder="e.g. 1799"
               className="mt-1 w-full border rounded-md px-3 py-2"
@@ -119,6 +142,7 @@ const AddArtifacts = () => {
             </label>
             <input
               type="text"
+              defaultValue={discoveredBy}
               name="discoveredBy"
               className="mt-1 w-full border rounded-md px-3 py-2"
               required
@@ -131,6 +155,7 @@ const AddArtifacts = () => {
             </label>
             <input
               type="text"
+              defaultValue={presentLocation}
               name="presentLocation"
               className="mt-1 w-full border rounded-md px-3 py-2"
               required
@@ -143,6 +168,7 @@ const AddArtifacts = () => {
             </label>
             <textarea
               name="shortDescription"
+              defaultValue={shortDescription}
               className="mt-1 w-full border rounded-md px-3 py-2"
               rows={2}
               required
@@ -155,6 +181,7 @@ const AddArtifacts = () => {
             </label>
             <textarea
               name="historicalContext"
+              defaultValue={historicalContext}
               className="mt-1 w-full border rounded-md px-3 py-2"
               rows={3}
               required
@@ -193,11 +220,11 @@ const AddArtifacts = () => {
           type="submit"
           className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
         >
-          Add Artifact
+          Update Artifact
         </button>
       </form>
     </div>
   );
 };
 
-export default AddArtifacts;
+export default UpdateArtifacts;

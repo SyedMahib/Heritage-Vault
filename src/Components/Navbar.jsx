@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 
 const Navbar = () => {
@@ -87,7 +87,7 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-                <a>My Artifacts</a>
+                <Link to={`/myArtifacts`}>My Artifacts</Link>
               </li>
               <li>
                 <a>Liked Artifacts</a>
