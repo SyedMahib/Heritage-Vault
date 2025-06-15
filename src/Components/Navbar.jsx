@@ -2,19 +2,18 @@ import React, { use } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 
-
 const Navbar = () => {
   const { user, signOutUser } = use(AuthContext);
 
   const handleLogOut = () => {
     signOutUser()
-    .then(() => {
-      console.log("sign out user!!")
-    })
-    .catch((err) => {
-      console.log(err.message);
-    })
-  }
+      .then(() => {
+        console.log("sign out user!!");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
   const navLinks = (
     <>
@@ -65,7 +64,39 @@ const Navbar = () => {
       </div>
       <div className="navbar-end gap-2">
         {user ? (
-          <button onClick={handleLogOut} className="btn">LogOut</button>
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  alt={user.displayName}
+                  src={user.photoURL}
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a className="font-bold">
+                  {user.displayName ? user.displayName : "user"}
+                </a>
+              </li>
+              <li>
+                <a>My Artifacts</a>
+              </li>
+              <li>
+                <a>Liked Artifacts</a>
+              </li>
+              <li>
+                <a onClick={handleLogOut}>Logout</a>
+              </li>
+            </ul>
+          </div>
         ) : (
           <>
             <NavLink to="/auth/Login" className="btn">
