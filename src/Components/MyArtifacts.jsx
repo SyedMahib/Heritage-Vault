@@ -4,17 +4,26 @@ import Swal from "sweetalert2";
 import { Link } from "react-router";
 
 const MyArtifacts = () => {
-  const { user } = use(AuthContext);
+  const { user, axiosSecure } = use(AuthContext);
 
   const [myArtifacts, setMyArtifacts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/myArtifacts?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setMyArtifacts(data);
+    axiosSecure
+      .get(`/myArtifacts?email=${user.email}`)
+      .then((res) => {
+        setMyArtifacts(res.data);
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${err.message}`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       });
-  }, [user]);
+  }, [user, axiosSecure]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -27,28 +36,38 @@ const MyArtifacts = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/artifacts/${id}`, {
-          method: "DELETE",
+        axiosSecure.delete(`/artifacts/${id}`).then((res) => {
+          if (res.data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your artifact has been deleted.",
+              icon: "success",
+            });
+
+            setMyArtifacts((prevArtifacts) =>
+              prevArtifacts.filter((artifact) => artifact._id !== id)
+            );
+          } else {
+            Swal.fire({
+              title: "Failed!",
+              text: "Could not delete the artifact.",
+              icon: "error",
+            });
+          }
         })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your artifact has been deleted.",
-                icon: "success",
-              });
-              setMyArtifacts((prevArtifacts) =>
-                prevArtifacts.filter((artifact) => artifact._id !== id)
-              );
-            }
-          });
+        .catch((err) => {
+           Swal.fire({
+                title: "Error!",
+                text: `${err.message}`,
+                icon: "error",
+            });
+        })
       }
     });
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-8 bg-gray-50 min-h-screen">
+    <div className="p-4 md:p-8 bg-gray-50 min-h-screen">
       <h2 className="text-4xl font-extrabold text-center text-gray-800 my-8 md:my-12 tracking-wide">
         My Posted Artifacts
       </h2>
@@ -57,7 +76,7 @@ const MyArtifacts = () => {
           You haven't posted any artifacts yet. Start by adding a new one!
         </p>
       ) : (
-        <div className="overflow-x-auto shadow-lg rounded-lg border border-gray-200">
+        <div className="container mx-auto overflow-x-auto shadow-lg rounded-lg border border-gray-200">
           <table className="min-w-full bg-white divide-y divide-gray-200">
             <thead className="bg-gradient-to-r from-stone-700 to-stone-900 text-white">
               <tr>

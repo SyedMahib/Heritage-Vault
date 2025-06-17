@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 
 const AddArtifacts = () => {
-  const { user } = use(AuthContext);
+  const { user, axiosSecure } = use(AuthContext);
 
   const navigate = useNavigate();
 
@@ -16,25 +16,26 @@ const AddArtifacts = () => {
 
     // send it to db
 
-    fetch("http://localhost:3000/artifacts", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newArtifact)
+    axiosSecure.post("/Artifacts", newArtifact).then((res) => {
+      if (res.data.insertedId) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Artifacts added successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/allArtifacts");
+      }
     })
-    .then((res) => res.json())
-    .then((data) => {
-        if(data.insertedId){
-            Swal.fire({
+    .catch((err) => {
+      Swal.fire({
             position: "top-end",
-            icon: "success",
-            title: "Artifacts added successfully !",
+            icon: "error",
+            title: `${err.message}`,
             showConfirmButton: false,
             timer: 1500,
           });
-          navigate("/allArtifacts");
-        }
     })
   };
 

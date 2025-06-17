@@ -10,6 +10,7 @@ import Register from "../Components/Register";
 import ArtifactsDetails from "../Components/ArtifactsDetails";
 import PrivateRoute from "../Provider/PrivateRoute";
 import UpdateArtifacts from "../Components/UpdateArtifacts";
+import LikedArtifacts from "../Components/LikedArtifacts";
 
 export const router = createBrowserRouter([
   {
@@ -58,7 +59,16 @@ export const router = createBrowserRouter([
             <UpdateArtifacts></UpdateArtifacts>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:3000/artifacts/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/artifacts/${params.id}`),
+      },
+      {
+        path: "/likedArtifatcs",
+        element: (
+          <PrivateRoute>
+            <LikedArtifacts></LikedArtifacts>
+          </PrivateRoute>
+        ),
       },
     ],
   },

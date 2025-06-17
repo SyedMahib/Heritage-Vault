@@ -17,7 +17,7 @@ const UpdateArtifacts = () => {
     presentLocation,
   } = useLoaderData();
 
-  const { user } = use(AuthContext);
+  const { user, axiosSecure } = use(AuthContext);
 
   const navigate = useNavigate();
 
@@ -27,16 +27,10 @@ const UpdateArtifacts = () => {
     const formData = new FormData(form);
     const UpdateArtifacts = Object.fromEntries(formData.entries());
 
-    fetch(`http://localhost:3000/artifacts/${_id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(UpdateArtifacts),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
+    axiosSecure
+      .put(`/artifacts/${_id}`, UpdateArtifacts)
+      .then((res) => {
+        if (res.data.modifiedCount) {
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -44,15 +38,24 @@ const UpdateArtifacts = () => {
             showCancelButton: false,
             timer: 1500,
           });
-          navigate("/myArtifacts");
-        } else if (data.modifiedCount === 0) {
+          navigate(`/artifacts/${_id}`);
+        } else {
           Swal.fire({
+            position: "top-end",
             icon: "info",
-            title: "No changes made",
-            text: "The artifact details are the same as before.",
-            confirmButtonText: "OK",
+            title: "No changes detected for update.",
+            showConfirmButton: true,
           });
         }
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${err.message}`,
+          showCancelButton: false,
+          timer: 2000,
+        });
       });
   };
 

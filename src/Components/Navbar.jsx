@@ -90,7 +90,7 @@ const Navbar = () => {
                 <Link to={`/myArtifacts`}>My Artifacts</Link>
               </li>
               <li>
-                <a>Liked Artifacts</a>
+                <Link to={`/likedArtifatcs`}>Liked Artifacts</Link>
               </li>
               <li>
                 <a onClick={handleLogOut}>Logout</a>

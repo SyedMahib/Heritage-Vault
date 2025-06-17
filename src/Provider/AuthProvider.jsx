@@ -8,10 +8,16 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.init";
+import axios from "axios";
 
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+
+  const axiosSecure = axios.create({
+    baseURL: "http://localhost:3000",
+    withCredentials: true,
+  });
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -25,7 +31,15 @@ const AuthProvider = ({ children }) => {
 
   const signOutUser = () => {
     setLoading(true);
-    return signOut(auth);
+    return axiosSecure
+      .post("/logout", { email: user?.email })
+      .then(() => {
+        return signOut(auth);
+      })
+      .catch((err) => {
+        alert(err.message);
+        return signOut(auth);
+      });
   };
 
   const updateUser = (updatedData) => {
@@ -35,6 +49,17 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      const userInfo = { email: currentUser.email };
+      if (currentUser) {
+        axiosSecure
+          .post("/jwt", userInfo)
+          .then((res) => {
+            console.log("JWT response", res.data);
+          })
+          .catch((err) => {
+            alert(err.message);
+          });
+      }
       setLoading(false);
       console.log("user in the auth state change", currentUser);
     });
@@ -45,12 +70,14 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     loading,
+    setLoading,
     user,
     createUser,
     signOutUser,
     updateUser,
     setUser,
     signInUser,
+    axiosSecure
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;
