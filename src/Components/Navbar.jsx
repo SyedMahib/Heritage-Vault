@@ -1,6 +1,8 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
+import Logo from "../assets/logo.png";
+import { FaLandmark } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, signOutUser } = use(AuthContext);
@@ -30,7 +32,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm md:container mx-auto">
+    <div className="navbar bg-[#f7f1e2] shadow-sm md:container mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -57,7 +59,10 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Heritage Vault</a>
+        <div className="flex items-center gap-2">
+          <FaLandmark size={35} color="#A37854"/>
+          <a className="text-xl font-bold">Heritage Vault</a>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-5">{navLinks}</ul>
@@ -71,10 +76,7 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt={user.displayName}
-                  src={user.photoURL}
-                />
+                <img alt={user.displayName} src={user.photoURL} />
               </div>
             </div>
             <ul

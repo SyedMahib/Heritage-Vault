@@ -13,7 +13,7 @@ const AllArtifacts = () => {
       setLoading(true);
       setError(null);
 
-      let url = `http://localhost:3000/artifacts`;
+      let url = `https://a-11-server-side-peach.vercel.app/artifacts`;
       if (onSearch) {
         url = `${url}?search=${encodeURIComponent(onSearch)}`;
       }
@@ -48,7 +48,7 @@ const AllArtifacts = () => {
   }
 
   return (
-    <div className="bg-[#E6D3B3]">
+    <div className="bg-[#f7f1e2]">
       <div className="container mx-auto p-4">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-8 relative">
           All Artifacts

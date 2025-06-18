@@ -38,7 +38,7 @@ const ArtifactsDetails = () => {
 
   const handleLike = () => {
     setIsLiked(!isLiked);
-    fetch(`http://localhost:3000/artifacts/like/${_id}`, {
+    fetch(`https://a-11-server-side-peach.vercel.app/artifacts/like/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

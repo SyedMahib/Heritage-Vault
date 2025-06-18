@@ -50,7 +50,7 @@ const ArtifactsCard = ({ artifact }) => {
           {artifact.shortDescription}
         </p>
 
-        <div className="mt-auto"> {/* Pushes the button to the bottom */}
+        <div className="mt-auto">
           <Link to={`/artifacts/${artifact._id}`}>
             <motion.button
               className="w-full bg-[#C8A97E] text-white py-3 rounded-lg font-semibold text-[#66503F] hover:bg-[#A37854] transition-colors"

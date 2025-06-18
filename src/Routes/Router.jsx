@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allArtifacts",
-        loader: () => fetch("http://localhost:3000/artifacts"),
+        loader: () => fetch("https://a-11-server-side-peach.vercel.app/artifacts"),
         element: <AllArtifacts></AllArtifacts>,
       },
       {
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/artifacts/${params.id}`),
+          fetch(`https://a-11-server-side-peach.vercel.app/artifacts/${params.id}`),
       },
       {
         path: "/addArtifacts",
@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/artifacts/${params.id}`),
+          fetch(`https://a-11-server-side-peach.vercel.app/artifacts/${params.id}`),
       },
       {
         path: "/likedArtifatcs",

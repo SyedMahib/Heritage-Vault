@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const axiosSecure = axios.create({
-    baseURL: "http://localhost:3000",
+    baseURL: "https://a-11-server-side-peach.vercel.app",
     withCredentials: true,
   });
 
@@ -49,8 +49,8 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      const userInfo = { email: currentUser.email };
       if (currentUser) {
+        const userInfo = { email: currentUser.email };
         axiosSecure
           .post("/jwt", userInfo)
           .then((res) => {
