@@ -14,7 +14,6 @@ const dataPromise = fetch(
 
 const Counter = () => {
   const data = use(dataPromise);
-  console.log(data);
 
   const stats = [
     {

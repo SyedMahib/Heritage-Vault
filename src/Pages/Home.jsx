@@ -3,6 +3,7 @@ import FeaturedArtifacts from "../Components/FeaturedArtifacts";
 import Banner from "../Components/Banner";
 import Testimonials from "../Components/Testimonials";
 import Counter from "../Components/Counter";
+import Gallery from "../Components/Gallery";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
         <FeaturedArtifacts></FeaturedArtifacts>
         <Testimonials></Testimonials>
         <Counter></Counter>
+        <Gallery></Gallery>
       </main>
     </div>
   );
