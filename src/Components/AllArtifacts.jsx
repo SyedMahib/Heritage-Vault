@@ -78,7 +78,7 @@ const AllArtifacts = () => {
             No artifacts found matching your search.
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
             {allArtifacts.map((artifact) => (
               <ArtifactsCard
                 key={artifact._id}
