@@ -48,7 +48,7 @@ const AllArtifacts = () => {
   }
 
   return (
-    <div className="bg-[#f7f1e2] h-screen">
+    <div className="bg-[#f7f1e2]">
       <div className="container mx-auto p-4">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-8 relative">
           All Artifacts

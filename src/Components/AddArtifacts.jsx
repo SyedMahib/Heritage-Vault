@@ -40,7 +40,7 @@ const AddArtifacts = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto mb-8">
       <form
         onSubmit={handleAddArtifacts}
         className="max-w-3xl mx-auto p-6 bg-white shadow-xl rounded-2xl mt-10 space-y-6"

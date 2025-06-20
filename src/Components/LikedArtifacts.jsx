@@ -48,7 +48,7 @@ const LikedArtifacts = () => {
         {likedArtifacts.map((artifact) => (
           <div
             key={artifact._id}
-            className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-300 border border-[#A37854] "
+            className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-300 border border-[#A37854] mb-3"
           >
             {artifact.artifactImage && (
               <img
