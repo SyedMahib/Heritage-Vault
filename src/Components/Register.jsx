@@ -22,6 +22,19 @@ const Register = () => {
     const password = form.password.value;
     console.log({ name, photo, email, password });
 
+    const passwordRegExp = /(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+
+    if (passwordRegExp.test(password) === false) {
+      setError(
+        "password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, and one number."
+      );
+      return;
+    } else {
+      setError("");
+    }
+
+    setError("");
+
     // create user
    createUser(email, password)
          .then((result) => {
@@ -114,6 +127,7 @@ const Register = () => {
                   placeholder="Password"
                   required
                 />
+                {error && <p className="text-red-600 text-xs">{error}</p>}
                 <button className="btn btn-neutral mt-4">Register</button>
 
                 <p className="text-center mt-3 font-semibold text-sm">

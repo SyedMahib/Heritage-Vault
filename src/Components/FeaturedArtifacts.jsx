@@ -42,7 +42,7 @@ const FeaturedArtifacts = () => {
   };
 
   return (
-    <section className="container mx-auto px-4 py-12">
+    <section className="container mx-auto px-4 py-12 mt-10">
       <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12 relative">
         Featured Artifacts
         <span className="block w-24 h-1 bg-[#A37854] mx-auto mt-4 rounded-full"></span>

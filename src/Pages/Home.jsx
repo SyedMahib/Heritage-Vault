@@ -2,6 +2,7 @@ import React from "react";
 import FeaturedArtifacts from "../Components/FeaturedArtifacts";
 import Banner from "../Components/Banner";
 import Testimonials from "../Components/Testimonials";
+import Counter from "../Components/Counter";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <main>
         <FeaturedArtifacts></FeaturedArtifacts>
         <Testimonials></Testimonials>
+        <Counter></Counter>
       </main>
     </div>
   );
