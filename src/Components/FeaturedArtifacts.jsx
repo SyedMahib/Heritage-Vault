@@ -45,7 +45,7 @@ const FeaturedArtifacts = () => {
     <section className="container mx-auto px-4 py-12">
       <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12 relative">
         Featured Artifacts
-        <span className="block w-24 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></span>
+        <span className="block w-24 h-1 bg-[#A37854] mx-auto mt-4 rounded-full"></span>
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -62,7 +62,7 @@ const FeaturedArtifacts = () => {
               <motion.img
                 src={artifact.artifactImage}
                 alt={artifact.artifactName}
-                className="w-full h-60 object-cover border-b"
+                className="w-full h-60 object-cover"
                 variants={imageVariants}
                 transition={{ duration: 0.3 }}
               />
@@ -80,7 +80,7 @@ const FeaturedArtifacts = () => {
                     {artifact.artifactName}
                   </h4>
                   <p className="text-sm line-clamp-3">
-                    {artifact.shortDescription}
+                    {artifact.historicalContext}
                   </p>
                 </div>
               </motion.div>

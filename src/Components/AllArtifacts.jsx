@@ -48,7 +48,7 @@ const AllArtifacts = () => {
   }
 
   return (
-    <div className="bg-[#f7f1e2]">
+    <div className="bg-[#f7f1e2] h-screen">
       <div className="container mx-auto p-4">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-8 relative">
           All Artifacts
@@ -60,13 +60,13 @@ const AllArtifacts = () => {
             <input
               type="text"
               placeholder="Search by Artifact Name..."
-              className="flex-grow p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-grow p-3 border border-gray-300 bg-white rounded-l-md focus:outline-none focus:ring-1 focus:ring-[#A37854]"
               value={search}
               onChange={handleSearchChange}
             />
             <button
               type="submit"
-              className="bg-blue-600 text-white px-6 py-3 rounded-r-md hover:bg-blue-700 transition-colors"
+              className="bg-[#A37854] text-white px-6 py-3 rounded-r-md hover:bg-[#8a623e] transition-colors"
             >
               Search
             </button>

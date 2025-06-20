@@ -1,7 +1,6 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
-import Logo from "../assets/logo.png";
 import { FaLandmark } from "react-icons/fa";
 
 const Navbar = () => {
@@ -20,19 +19,25 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink className={({ isActive }) =>
+            `relative pb-1 ${isActive ? 'nav-link-active' : 'nav-link-hover'}`
+          } to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/allArtifacts">All Artifacts</NavLink>
+        <NavLink className={({ isActive }) =>
+            `relative pb-1 ${isActive ? 'nav-link-active' : 'nav-link-hover'}`
+          } to="/allArtifacts">All Artifacts</NavLink>
       </li>
       <li>
-        <NavLink to="/addArtifacts">Add Artifacts</NavLink>
+        <NavLink className={({ isActive }) =>
+            `relative pb-1 ${isActive ? 'nav-link-active' : 'nav-link-hover'}`
+          } to="/addArtifacts">Add Artifacts</NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-[#f7f1e2] shadow-sm md:container mx-auto">
+    <div className="navbar bg-[#f7f1e2] md:container mx-auto pt-2 pb-5">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -89,10 +94,10 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-                <Link to={`/myArtifacts`}>My Artifacts</Link>
+                <NavLink className={({isActive}) => `${isActive ? 'font-bold text-[#A37854]' : 'none'}`} to={`/myArtifacts`}>My Artifacts</NavLink>
               </li>
               <li>
-                <Link to={`/likedArtifatcs`}>Liked Artifacts</Link>
+                <NavLink className={({isActive}) => `${isActive ? 'font-bold text-[#A37854]' : 'none'}`} to={`/likedArtifatcs`}>Liked Artifacts</NavLink>
               </li>
               <li>
                 <a onClick={handleLogOut}>Logout</a>

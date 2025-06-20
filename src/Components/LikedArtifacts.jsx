@@ -1,5 +1,6 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthContext";
+import { Link } from "react-router";
 
 const LikedArtifacts = () => {
   const { user, axiosSecure } = use(AuthContext);
@@ -37,42 +38,51 @@ const LikedArtifacts = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6 text-center">
+   <div className="container mx-auto p-4 py-8 bg-[#f7f1e2] pb-[100px]">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12 relative">
         My Liked Artifacts
+        <span className="block w-24 h-1 bg-[#A37854] mx-auto mt-4 rounded-full"></span>
       </h1>
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
-          <thead>
-            <tr className="bg-gray-100 text-left text-gray-600 uppercase text-sm leading-normal">
-              <th className="py-3 px-6 border-b border-gray-300">
-                Artifact Name
-              </th>
-              <th className="py-3 px-6 border-b border-gray-300">
-                Description
-              </th>
-              <th className="py-3 px-6 border-b border-gray-300">Likes</th>
-              <th className="py-3 px-6 border-b border-gray-300">Added By</th>
-              {/* Add more table headers as needed for other artifact properties */}
-            </tr>
-          </thead>
-          <tbody className="text-gray-700 text-sm font-light">
-            {likedArtifacts.map((artifact) => (
-              <tr
-                key={artifact._id}
-                className="border-b border-gray-200 hover:bg-gray-50"
-              >
-                <td className="py-3 px-6 whitespace-nowrap">
-                  {artifact.artifactName}
-                </td>
-                <td className="py-3 px-6">{artifact.shortDescription}</td>
-                <td className="py-3 px-6">{artifact.likeCount || 0}</td>
-                <td className="py-3 px-6">{artifact.addedBy || "N/A"}</td>
-                {/* Add more table cells for other artifact properties */}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {likedArtifacts.map((artifact) => (
+          <div
+            key={artifact._id}
+            className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-300 border border-[#A37854] "
+          >
+            {artifact.artifactImage && (
+              <img
+                src={artifact.artifactImage}
+                alt={artifact.artifactName}
+                className="w-full h-48 object-cover"
+              />
+            )}
+            <div className="p-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                {artifact.artifactName}
+              </h3>
+              <p className="text-gray-700 mb-4 text-base line-clamp-3">
+                {artifact.shortDescription}
+              </p>
+
+              <div className="space-y-2 text-gray-800 text-sm">
+                <p>
+                  <span className="font-semibold text-[#A37854]">Likes:</span>{" "}
+                  {artifact.likeCount || 0}
+                </p>
+                <p>
+                  <span className="font-semibold text-[#A37854]">Added By:</span>{" "}
+                  {artifact.addedBy || "N/A"}
+                </p>
+              </div>
+              <div className="mt-6 text-right">
+                <Link to={`/artifacts/${artifact._id}`} className="bg-[#A37854] hover:bg-[#8a623e] text-white font-bold py-2 px-4 rounded-full transition-colors duration-200">
+                  View Details
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

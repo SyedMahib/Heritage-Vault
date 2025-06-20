@@ -1,6 +1,7 @@
 import React from "react";
 import FeaturedArtifacts from "../Components/FeaturedArtifacts";
 import Banner from "../Components/Banner";
+import Testimonials from "../Components/Testimonials";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       </header>
       <main>
         <FeaturedArtifacts></FeaturedArtifacts>
+        <Testimonials></Testimonials>
       </main>
     </div>
   );

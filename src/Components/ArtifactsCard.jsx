@@ -22,7 +22,7 @@ const ArtifactsCard = ({ artifact }) => {
 
   return (
     <motion.div
-      className="bg-[#E6D3B3] rounded-xl shadow-lg overflow-hidden border border-[#A37854] flex flex-col h-full"
+      className="bg-white rounded-xl shadow-lg overflow-hidden border border-[#A37854] flex flex-col h-full"
       variants={cardVariants}
       whileHover="hover"
       initial="initial"
@@ -43,17 +43,17 @@ const ArtifactsCard = ({ artifact }) => {
       </div>
 
       <div className="p-6 flex flex-col flex-grow">
-        <h2 className="text-2xl font-bold text-[#66503F] mb-2 truncate">
+        <h2 className="text-2xl font-bold text-[#1F1F1F] mb-2 truncate">
           {artifact.artifactName}
         </h2>
-        <p className="text-[#8E7E6F] text-sm mb-4 line-clamp-3 flex-grow">
+        <p className="text-[#5A5A5A] text-sm mb-4 line-clamp-3 flex-grow font-medium">
           {artifact.shortDescription}
         </p>
 
         <div className="mt-auto">
           <Link to={`/artifacts/${artifact._id}`}>
             <motion.button
-              className="w-full bg-[#C8A97E] text-white py-3 rounded-lg font-semibold text-[#66503F] hover:bg-[#A37854] transition-colors"
+              className="w-full bg-[#A37854] text-white py-3 rounded-lg font-semibold hover:bg-[#8a623e] transition-colors"
               whileTap={{ scale: 0.95 }}
             >
               View Details

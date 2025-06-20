@@ -71,8 +71,8 @@ const ArtifactsDetails = () => {
 
       <div className="flex justify-between items-start mb-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">{artifactName}</h1>
-          <span className="inline-block mt-2 px-3 py-1 text-sm font-bold bg-blue-100 text-blue-700 rounded-full">
+          <h1 className="text-3xl font-bold text-[#1F1F1F]">{artifactName}</h1>
+          <span className="inline-block mt-2 px-3 py-1 text-sm font-bold bg-[#4B6587] text-white rounded-full">
             {artifactType}
           </span>
         </div>
@@ -93,34 +93,34 @@ const ArtifactsDetails = () => {
         </div>
       </div>
 
-      <p className="text-gray-700 text-lg mb-6">{shortDescription}</p>
+      <p className="text-[#5A5A5A] text-lg mb-6 font-medium">{shortDescription}</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-600">
         <div>
-          <h3 className="font-semibold text-gray-800">Historical Context</h3>
-          <p className="mt-2">{historicalContext}</p>
+          <h3 className="font-bold text-[#1F1F1F]">Historical Context</h3>
+          <p className="mt-2 text-[#5A5A5A] font-medium">{historicalContext}</p>
         </div>
 
         <div>
-          <h3 className="font-semibold text-gray-800">Artifact Details</h3>
+          <h3 className="font-bold text-[#1F1F1F]">Artifact Details</h3>
           <ul className="mt-2 space-y-2">
-            <li>
+            <li className="text-[#5A5A5A] font-medium">
               <strong>Created At:</strong> {createdAt}
             </li>
-            <li>
+            <li className="text-[#5A5A5A] font-medium">
               <strong>Discovered At:</strong> {discoveredAt}
             </li>
-            <li>
+            <li className="text-[#5A5A5A] font-medium">
               <strong>Discovered By:</strong> {discoveredBy}
             </li>
-            <li>
+            <li className="text-[#5A5A5A] font-medium">
               <strong>Current Location:</strong> {presentLocation}
             </li>
           </ul>
         </div>
 
         <div className="md:col-span-2">
-          <h3 className="font-semibold text-gray-800">Submitted By</h3>
+          <h3 className="font-bold text-[#1F1F1F]">Submitted By</h3>
           <ul className="mt-2 space-y-1">
             <li>
               <strong>Name:</strong> {addedBy}

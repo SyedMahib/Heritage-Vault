@@ -11,11 +11,13 @@ import ArtifactsDetails from "../Components/ArtifactsDetails";
 import PrivateRoute from "../Provider/PrivateRoute";
 import UpdateArtifacts from "../Components/UpdateArtifacts";
 import LikedArtifacts from "../Components/LikedArtifacts";
+import Error404 from "../Components/Error404";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
+    errorElement: <Error404></Error404>,
     children: [
       {
         index: true,

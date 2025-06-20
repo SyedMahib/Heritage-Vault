@@ -19,3 +19,49 @@
 /* * {
   font-family: "Cinzel", serif;
 }  */
+
+.nav-link-hover {
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #A37854;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-link-hover:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.nav-link-active {
+  font-weight: bold;
+  color: #A37854; 
+}
+
+.nav-link-active::after {
+  content: '';
+  position: absolute;
+  width: 50%; 
+  height: 2px;
+  bottom: -5px; 
+  left: 50%; 
+  transform: translateX(-50%) scaleX(1); 
+  background-color: #A37854;
+  transition: transform 0.3s ease-out;
+}
+
+/* Optional: Add a slight transition for the font-weight change */
+.nav-link-hover,
+.nav-link-active {
+  transition: font-weight 0.2s ease-in-out;
+}
