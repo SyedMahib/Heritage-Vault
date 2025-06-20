@@ -4,6 +4,7 @@ import Banner from "../Components/Banner";
 import Testimonials from "../Components/Testimonials";
 import Counter from "../Components/Counter";
 import Gallery from "../Components/Gallery";
+import OurGoal from "../Components/OurGoal";
 
 const Home = () => {
   return (
@@ -13,9 +14,10 @@ const Home = () => {
       </header>
       <main>
         <FeaturedArtifacts></FeaturedArtifacts>
-        <Testimonials></Testimonials>
+        <OurGoal></OurGoal>
         <Counter></Counter>
         <Gallery></Gallery>
+        <Testimonials></Testimonials>
       </main>
     </div>
   );

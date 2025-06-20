@@ -12,7 +12,10 @@ const Gallery = () => {
     <div>
       <section className="py-16">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-gray-800">Our Gallery</h2>
+           <h2 className="text-3xl md:text-5xl font-bold text-[#1F1F1F] my-4 ">
+         Our Gallery
+          <span className="block w-[100px] h-1 bg-[#A37854] mx-auto mt-4 rounded-full"></span>
+        </h2>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-6xl mx-auto px-4">
