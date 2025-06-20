@@ -38,7 +38,7 @@ const LikedArtifacts = () => {
   }
 
   return (
-   <div className="container mx-auto p-4 py-8 bg-[#f7f1e2] pb-[100px]">
+   <div className="container mx-auto p-4 py-8 bg-[#f7f1e2] pb-[100px] h-screen">
       <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12 relative">
         My Liked Artifacts
         <span className="block w-24 h-1 bg-[#A37854] mx-auto mt-4 rounded-full"></span>
