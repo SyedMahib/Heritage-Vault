@@ -6,13 +6,18 @@ import {
   onAuthStateChanged,
   signOut,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.init";
 import axios from "axios";
 
+
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+
+  const Provider = new GoogleAuthProvider()
 
   const axiosSecure = axios.create({
     baseURL: "https://a-11-server-side-peach.vercel.app",
@@ -28,6 +33,11 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+
+ const signInWithGoogle = () => {
+  setLoading(true)
+  return signInWithPopup(auth, Provider)
+ }
 
   const signOutUser = () => {
     setLoading(true);
@@ -76,6 +86,7 @@ const AuthProvider = ({ children }) => {
     signOutUser,
     updateUser,
     setUser,
+    signInWithGoogle,
     signInUser,
     axiosSecure
   };
