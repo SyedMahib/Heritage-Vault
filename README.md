@@ -50,3 +50,6 @@ This project is built using modern web technologies to ensure a robust, scalable
     * `react-countup`
 * **SweetAlert2:** A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes.
     * `sweetalert2`
+
+
+Live URL: https://heritage-vault-8691f.web.app/
