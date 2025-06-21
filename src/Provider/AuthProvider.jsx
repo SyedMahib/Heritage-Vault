@@ -63,15 +63,13 @@ const AuthProvider = ({ children }) => {
         const userInfo = { email: currentUser.email };
         axiosSecure
           .post("/jwt", userInfo)
-          .then((res) => {
-            console.log("JWT response", res.data);
+          .then(() => {
           })
           .catch((err) => {
             alert(err.message);
           });
       }
       setLoading(false);
-      console.log("user in the auth state change", currentUser);
     });
     return () => {
       unSubscribe();

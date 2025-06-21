@@ -64,10 +64,19 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <div className="flex items-center gap-2">
-          <FaLandmark size={35} color="#A37854"/>
+        {
+          user ? (
+            <div className="flex items-center gap-2 ">
+          <FaLandmark size={50} md:size={35} color="#A37854"/>
           <a className="text-xl font-bold">Heritage Vault</a>
         </div>
+          ) : (
+            <div className="flex items-center gap-2">
+          <FaLandmark className="hidden md:block" size={35} color="#A37854"/>
+          <a className="text-xl font-bold">Heritage Vault</a>
+        </div>
+          )
+        }
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-5">{navLinks}</ul>
