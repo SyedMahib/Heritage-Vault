@@ -5,6 +5,7 @@ import Testimonials from "../Components/Testimonials";
 import Counter from "../Components/Counter";
 import Gallery from "../Components/Gallery";
 import OurGoal from "../Components/OurGoal";
+import NewsLetterSection from "../Components/NewsLetterSection";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
         <Counter></Counter>
         <Gallery></Gallery>
         <Testimonials></Testimonials>
+        <NewsLetterSection></NewsLetterSection>
       </main>
     </div>
   );

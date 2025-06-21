@@ -3,7 +3,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { useRef } from "react";
-import './slider.css'
+import "./slider.css";
 
 const artifacts = [
   {
@@ -21,15 +21,28 @@ const artifacts = [
     image:
       "https://i.ibb.co/VnnwLVy/Gemini-Generated-Image-ia6ismia6ismia6i.png",
   },
+  {
+    name: "Scroll of the Silent Forest",
+    image: "https://i.ibb.co/HMDTrWD/bdffc280-6885-4557-b245-744dfe826fdb-large.webp",
+    era: "500 AD",
+    discovered: "2010",
+    discoveredBy: "Botanist, Dr. Alistair Finch",
+  },
+  {
+    name: "Mamluk Mosque Lamp ",
+    image: "https://i.ibb.co/5h7yBy31/FKq-E-EIXo-AAGkpw.jpg",
+    era: "1350 AD",
+    discovered: "1890",
+    discoveredBy: "French explorer Jean-Pierre Bourdain"
+  }
   // Add more artifacts here
 ];
 
 export default function ArtifactSlider() {
-
-    const progressCircle = useRef(null);
+  const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {
-    progressCircle.current.style.setProperty('--progress', 1 - progress);
+    progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
 
@@ -66,7 +79,7 @@ export default function ArtifactSlider() {
                 </p>
               </div>
             </div>
-          </SwiperSlide>  
+          </SwiperSlide>
         ))}
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>

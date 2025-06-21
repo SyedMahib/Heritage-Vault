@@ -60,7 +60,7 @@ const AllArtifacts = () => {
             <input
               type="text"
               placeholder="Search by Artifact Name..."
-              className="flex-grow p-3 border border-gray-300 bg-white rounded-l-md focus:outline-none focus:ring-1 focus:ring-[#A37854]"
+              className="flex-grow p-3 border border-gray-300 bg-white rounded-l-md focus:outline-none focus:ring-1 focus:ring-[#A37854] w-[200px]"
               value={search}
               onChange={handleSearchChange}
             />
