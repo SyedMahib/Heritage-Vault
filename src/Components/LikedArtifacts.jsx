@@ -35,7 +35,7 @@ const LikedArtifacts = () => {
   }
 
   return (
-   <div className="container mx-auto p-4 py-8 bg-[#f7f1e2] pb-[100px]">
+    <div className="container mx-auto p-4 py-8 bg-[#f7f1e2] pb-[100px]">
       <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12 relative">
         My Liked Artifacts
         <span className="block w-24 h-1 bg-[#A37854] mx-auto mt-4 rounded-full"></span>
@@ -68,12 +68,17 @@ const LikedArtifacts = () => {
                   {artifact.likeCount || 0}
                 </p>
                 <p>
-                  <span className="font-semibold text-[#A37854]">Added By:</span>{" "}
+                  <span className="font-semibold text-[#A37854]">
+                    Added By:
+                  </span>{" "}
                   {artifact.addedBy || "N/A"}
                 </p>
               </div>
               <div className="mt-6 text-right">
-                <Link to={`/artifacts/${artifact._id}`} className="bg-[#A37854] hover:bg-[#8a623e] text-white font-bold py-2 px-4 rounded-full transition-colors duration-200">
+                <Link
+                  to={`/artifacts/${artifact._id}`}
+                  className="bg-[#A37854] hover:bg-[#8a623e] text-white font-bold py-2 px-4 rounded-full transition-colors duration-200"
+                >
                   View Details
                 </Link>
               </div>

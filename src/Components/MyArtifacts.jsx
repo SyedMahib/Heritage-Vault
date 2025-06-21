@@ -2,7 +2,6 @@ import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthContext";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
-
 const MyArtifacts = () => {
   const { user, axiosSecure } = use(AuthContext);
 

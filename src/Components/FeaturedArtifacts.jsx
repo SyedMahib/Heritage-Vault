@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
+import { FaArrowRight } from "react-icons/fa";
 
 const FeaturedArtifacts = () => {
   const [featuredArtifacts, setFeaturedArtifacts] = useState([]);
@@ -57,7 +58,6 @@ const FeaturedArtifacts = () => {
           >
             <div className="relative overflow-hidden">
               {" "}
-              
               <motion.img
                 src={artifact.artifactImage}
                 alt={artifact.artifactName}
@@ -65,7 +65,6 @@ const FeaturedArtifacts = () => {
                 variants={imageVariants}
                 transition={{ duration: 0.3 }}
               />
-              
               <motion.div
                 className="absolute inset-0 bg-black bg- flex items-center justify-center p-4 text-white text-center"
                 variants={overlayVariants}
@@ -97,9 +96,9 @@ const FeaturedArtifacts = () => {
                   ❤️{" "}
                   <span className="ml-1">{artifact.likeCount || 0} Likes</span>
                 </span>
-                <span className="text-white text-sm badge bg-[#4B6587] font-bold rounded-full">
+                {/* <span className="text-white text-sm badge bg-[#4B6587] font-bold rounded-full">
                   {artifact.artifactType}
-                </span>
+                </span> */}
               </div>
               <Link to={`/artifacts/${artifact._id}`}>
                 <motion.button
@@ -112,6 +111,12 @@ const FeaturedArtifacts = () => {
             </div>
           </motion.div>
         ))}
+      </div>
+      <div className="flex justify-center mt-8">
+        <Link to={`/allArtifacts`} className="btn bg-[#A37854] hover:bg-[#8a623e] text-white text-lg flex items-center group rounded-xl px-10">
+          See all
+          <FaArrowRight className="transform transition duration-200 ease-in-out group-hover:translate-x-2" size={15}></FaArrowRight>
+        </Link>
       </div>
     </section>
   );

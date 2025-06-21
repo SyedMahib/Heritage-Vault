@@ -79,11 +79,11 @@ export const router = createBrowserRouter([
     element: <AuthLayout></AuthLayout>,
     children: [
       {
-        path: "/auth/Login",
+        path: "/auth/login",
         element: <Login></Login>,
       },
       {
-        path: "/auth/Register",
+        path: "/auth/register",
         element: <Register></Register>,
       },
     ],
