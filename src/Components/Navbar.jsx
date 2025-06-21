@@ -67,7 +67,7 @@ const Navbar = () => {
         {
           user ? (
             <div className="flex items-center gap-2 ">
-          <FaLandmark size={50} md:size={35} color="#A37854"/>
+          <FaLandmark className="md:w-[35px]" size={50} color="#A37854"/>
           <a className="text-xl font-bold">Heritage Vault</a>
         </div>
           ) : (
