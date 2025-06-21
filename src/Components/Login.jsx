@@ -85,14 +85,14 @@ const Login = () => {
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
             <button
-          type="submit"
-          onClick={handleGoogleLogIn}
-          className="btn btn-outline hover:bg-[#A37854] hover:text-white text-lg mt-8"
-        >
-          <FaGoogle />
-          SignIn with Google
-        </button>
-        <p className="border border-dashed border-gray-400 my-5"></p>
+              type="submit"
+              onClick={handleGoogleLogIn}
+              className="btn btn-outline hover:bg-[#A37854] hover:text-white text-lg mt-8"
+            >
+              <FaGoogle />
+              SignIn with Google
+            </button>
+            <p className="border border-dashed border-gray-400 my-5"></p>
             <h1 className="text-4xl font-bold text-center">Login now!</h1>
             <form onSubmit={handleLogin}>
               <fieldset className="fieldset">

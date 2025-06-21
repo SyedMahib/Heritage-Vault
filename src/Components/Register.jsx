@@ -4,12 +4,13 @@ import RegisterLottie from "../assets/Lotties/Register.json";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import Swal from "sweetalert2";
+import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
-
   const [error, setError] = useState("");
 
-  const { createUser, updateUser, setUser } = use(AuthContext);
+  const { createUser, updateUser, setUser, signInWithGoogle } =
+    use(AuthContext);
 
   const navigate = useNavigate();
 
@@ -36,46 +37,75 @@ const Register = () => {
     setError("");
 
     // create user
-   createUser(email, password)
-         .then((result) => {
-           const user = result.user;
-           // console.log(user);
-           Swal.fire({
-             position: "top-end",
-             icon: "success",
-             title: "Created account successfully!",
-             showConfirmButton: false,
-             timer: 1500,
-           });
-           // setUser(user);
-           updateUser({ displayName: name, photoURL: photo })
-             .then(() => {
-               setUser({ ...user, displayName: name, photoURL: photo });
-               navigate("/");
-             })
-             .catch((error) => {
-               setError(error.message);
-               setUser(user);
-               Swal.fire({
-                 position: "top-end",
-                 icon: "error",
-                 title: `${error.message}`,
-                 showConfirmButton: false,
-                 timer: 1500,
-               });
-             });
-         })
-         .catch((error) => {
-           setError(error.message);
-           Swal.fire({
-             position: "top-end",
-             icon: "error",
-             title: `${error.message}`,
-             showConfirmButton: false,
-             timer: 1500,
-           });
-         });
-     };
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        // console.log(user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Created account successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        // setUser(user);
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+            navigate("/");
+          })
+          .catch((error) => {
+            setError(error.message);
+            setUser(user);
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: `${error.message}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          });
+      })
+      .catch((error) => {
+        setError(error.message);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
+
+  const handleGoogleRegister = (e) => {
+    e.preventDefault();
+
+    signInWithGoogle()
+      .then((res) => {
+        const user = res.user;
+        setUser(user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "SignUp successfull!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+        setError("");
+      })
+      .catch((err) => {
+        setError(err.message);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
 
   return (
     <div className="hero min-h-screen">
@@ -85,6 +115,15 @@ const Register = () => {
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
+            <button
+              type="submit"
+              onClick={handleGoogleRegister}
+              className="btn btn-outline hover:bg-[#A37854] hover:text-white text-lg mt-8"
+            >
+              <FaGoogle />
+              Register with Google
+            </button>
+            <p className="border border-dashed border-gray-400 my-5"></p>
             <h1 className="text-4xl font-bold text-center">Register now!</h1>
             <form onSubmit={handleRegister}>
               <fieldset className="fieldset">

@@ -28,7 +28,7 @@ const LikedArtifacts = () => {
 
   if (likedArtifacts.length === 0) {
     return (
-      <div className="text-center p-5">
+      <div className="text-center p-5 min-h-[calc(100vh-295px)]">
         <h2 className="text-xl font-semibold">No Liked Artifacts Yet!</h2>
         <p className="mt-2 text-gray-600">
           Go explore and like some amazing heritage artifacts to see them here.
