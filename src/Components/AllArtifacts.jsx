@@ -52,7 +52,7 @@ const AllArtifacts = () => {
       <div className="container mx-auto p-4">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-8 relative">
           All Artifacts
-          <span className="block w-24 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></span>
+          <span className="block w-24 h-1 bg-[#A37854] mx-auto mt-4 rounded-full"></span>
         </h1>
 
         <div className="flex justify-center mb-8">

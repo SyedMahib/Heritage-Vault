@@ -19,7 +19,7 @@ const OurGoal = () => {
     <section className="py-16 text-gray-800">
       <div className="max-w-6xl mx-auto px-4 md:flex md:items-center md:gap-10">
         {/* Optional Image or Illustration */}
-        <div className="md:w-1/2 mb-8 md:mb-0" data-aos="fade-up"  data-aos-delay="800">
+        <div className="md:w-1/2 mb-8 md:mb-0" data-aos="fade-up"  data-aos-delay="700">
           <img
             src={Gif}
             alt="Artifact preservation"
@@ -31,7 +31,7 @@ const OurGoal = () => {
         <div
           className="md:w-1/2 text-center md:text-left"
           data-aos="fade-up"
-          data-aos-delay="800"
+          data-aos-delay="700"
         >
           <h2 className="text-3xl md:text-5xl text-[#1F1F1F] font-bold mb-4">Our Goal</h2>
           <p className="text-lg mb-4 leading-relaxed text-[#5A5A5A] font-medium">

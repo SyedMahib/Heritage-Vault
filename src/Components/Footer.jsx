@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../assets/logo.png"
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -8,9 +9,9 @@ const Footer = () => {
         <aside className="flex items-center">
           <img className="w-[100px]" src={Logo} alt=""/>
           <p className="">
-            ACME Industries Ltd.
+            Heritage Vault.
             <br />
-            Providing reliable tech since 1992
+            Tracking Artifacts since 2001
           </p>
         </aside>
         <nav>
@@ -24,8 +25,8 @@ const Footer = () => {
           <h6 className="footer-title">Company</h6>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <Link to={`/allArtifacts`} className="link link-hover">Collections</Link>
+          <Link to={`/addArtifacts`} className="link link-hover">Add an Artifact</Link>
         </nav>
         <nav>
           <h6 className="footer-title">Legal</h6>
