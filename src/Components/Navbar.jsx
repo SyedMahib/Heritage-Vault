@@ -115,10 +115,10 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <NavLink to="/auth/login" className="btn">
+            <NavLink to="/auth/login" className="btn bg-[#A37854] text-white hover:bg-[#8a623e]">
               LogIn
             </NavLink>
-            <NavLink to="/auth/register" className="btn">
+            <NavLink to="/auth/register" className="btn bg-[#A37854] text-white hover:bg-[#8a623e]">
               Register
             </NavLink>
           </>

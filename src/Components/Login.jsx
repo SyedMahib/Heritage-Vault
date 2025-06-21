@@ -118,12 +118,12 @@ const Login = () => {
                 <div>
                   <a className="link link-hover">Forgot password?</a>
                 </div>
-                <button className="btn btn-neutral mt-4">Login</button>
+                <button className="btn text-white mt-4 bg-[#A37854] hover:bg-[#8a623e]">Login</button>
                 <p className="text-center mt-3 font-semibold text-sm">
                   Don't have an account?{" "}
                   <Link
                     to="/auth/register"
-                    className="text-secondary cursor-pointer hover:underline hover:font-bold"
+                    className="text-[#A37854] cursor-pointer hover:underline hover:font-extrabold"
                   >
                     Register
                   </Link>

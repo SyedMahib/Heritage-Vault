@@ -165,13 +165,13 @@ const Register = () => {
                   required
                 />
                 {error && <p className="text-red-600 text-xs">{error}</p>}
-                <button className="btn btn-neutral mt-4">Register</button>
+                <button className="btn text-white mt-4 bg-[#A37854] hover:bg-[#8a623e]">Register</button>
 
                 <p className="text-center mt-3 font-semibold text-sm">
                   Already have an account?{" "}
                   <Link
                     to="/auth/login"
-                    className="text-secondary cursor-pointer hover:underline hover:font-bold"
+                    className="text-[#A37854] cursor-pointer hover:underline hover:font-extrabold"
                   >
                     Login
                   </Link>
