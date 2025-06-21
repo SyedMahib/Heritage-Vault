@@ -7,7 +7,7 @@ const DynamicTitle = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    let title = "Heritage Vault"; // default
+    let title = "Heritage Vault"; 
 
     const titleMap = {
       "/": "Home | Heritage Vault",

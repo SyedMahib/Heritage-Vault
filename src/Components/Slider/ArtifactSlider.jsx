@@ -35,7 +35,6 @@ const artifacts = [
     discovered: "1890",
     discoveredBy: "French explorer Jean-Pierre Bourdain"
   }
-  // Add more artifacts here
 ];
 
 export default function ArtifactSlider() {
@@ -68,7 +67,7 @@ export default function ArtifactSlider() {
                 backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${item.image})`,
               }}
             >
-              {/* Text Content */}
+
               <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-4">
                 <h2 className="text-3xl md:text-5xl font-bold mb-4">
                   {item.name}
