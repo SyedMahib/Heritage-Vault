@@ -4,7 +4,6 @@ import { Link } from "react-router";
 
 const FeaturedArtifacts = () => {
   const [featuredArtifacts, setFeaturedArtifacts] = useState([]);
-  //   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const featuredArtifactsData = () => {
@@ -58,7 +57,7 @@ const FeaturedArtifacts = () => {
           >
             <div className="relative overflow-hidden">
               {" "}
-              {/* New wrapper for image and overlay */}
+              
               <motion.img
                 src={artifact.artifactImage}
                 alt={artifact.artifactName}
@@ -66,7 +65,7 @@ const FeaturedArtifacts = () => {
                 variants={imageVariants}
                 transition={{ duration: 0.3 }}
               />
-              {/* The Overlay */}
+              
               <motion.div
                 className="absolute inset-0 bg-black bg- flex items-center justify-center p-4 text-white text-center"
                 variants={overlayVariants}

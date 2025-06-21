@@ -40,7 +40,6 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        // console.log(user);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -48,7 +47,6 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        // setUser(user);
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo });

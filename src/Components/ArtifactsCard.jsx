@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion"; // Assuming you have framer-motion installed for animations
+import { motion } from "framer-motion"; 
 import { Link } from "react-router";
 
 const ArtifactsCard = ({ artifact }) => {
@@ -7,15 +7,15 @@ const ArtifactsCard = ({ artifact }) => {
     initial: { scale: 1 },
     hover: {
       scale: 1.05,
-      boxShadow: "0 10px 20px rgba(0,0,0,0.15)", // Subtle shadow for depth
+      boxShadow: "0 10px 20px rgba(0,0,0,0.15)", 
       transition: { duration: 0.3 }
     }
   };
 
   const imageVariants = {
     hover: {
-      scale: 1.1, // Slightly zoom in the image
-      filter: "brightness(0.8)", // Darken the image slightly
+      scale: 1.1, 
+      filter: "brightness(0.8)", 
       transition: { duration: 0.3 }
     }
   };
@@ -34,7 +34,7 @@ const ArtifactsCard = ({ artifact }) => {
           className="w-full h-64 object-cover object-center"
           variants={imageVariants}
         />
-        {/* Optional: Add an overlay on hover */}
+        
         <motion.div
           className="absolute inset-0 bg-[#C8A97E] opacity-0"
           variants={{ hover: { opacity: 0.2 } }}

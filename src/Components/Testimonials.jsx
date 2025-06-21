@@ -87,21 +87,6 @@ const testimonials = [
   }
 ];
 
-const StarRating = (rating) => {
-  const stars = [];
-  for (let i = 0; i < 5; i++) {
-    stars.push(
-      <span
-        key={i}
-        className={i < rating ? "text-yellow-400" : "text-gray-300"}
-      >
-        ★
-      </span>
-    );
-  }
-  return <div className="flex text-lg">{stars}</div>;
-};
-
 const Testimonials = () => {
   return (
     <section className="py-16 container mx-auto">

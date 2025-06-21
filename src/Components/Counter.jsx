@@ -4,7 +4,6 @@ import {
   FaBoxes,
   FaGlobeAsia,
   FaLandmark,
-  FaTrophy,
   FaUsers,
 } from "react-icons/fa";
 

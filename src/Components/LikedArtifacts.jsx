@@ -6,9 +6,6 @@ const LikedArtifacts = () => {
   const { user, axiosSecure } = use(AuthContext);
   const [likedArtifacts, setLikedArtifacts] = useState([]);
   const [loading, setLoading] = useState(true);
-  //   const [error, setError] = useState(null);
-
-  // console.log(likedArtifacts);
 
   useEffect(() => {
     setLoading(true);

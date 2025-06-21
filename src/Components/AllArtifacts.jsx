@@ -6,8 +6,7 @@ const AllArtifacts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
-  const [onSearch, setOnSearch] = useState(""); // To trigger fetch on button click/enter
-
+  const [onSearch, setOnSearch] = useState("");
   useEffect(() => {
     const fetchArtifacts = async () => {
       setLoading(true);
@@ -28,7 +27,7 @@ const AllArtifacts = () => {
     };
 
     fetchArtifacts();
-  }, [onSearch]); // Re-fetch whenever triggerSearch changes
+  }, [onSearch]);
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
@@ -36,7 +35,7 @@ const AllArtifacts = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setOnSearch(search); // Update triggerSearch to re-run useEffect
+    setOnSearch(search);
   };
 
   if (loading) {

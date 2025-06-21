@@ -18,7 +18,7 @@ const NewsLetterSection = () => {
   return (
     <section className="bg-[#f7f1e2] py-16 px-4 md:px-8">
       {" "}
-      {/* Adjusted background and padding */}
+      
       <div className="container mx-auto text-center max-w-7xl p-10">
         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
           Newsletter For More Subscribe
