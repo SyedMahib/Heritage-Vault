@@ -114,7 +114,7 @@ const Testimonials = () => {
         >
           {testimonials.map((t) => (
             <SwiperSlide key={t.id}>
-              <div className=" bg-white p-6 rounded-2xl transition duration-300 flex flex-col justify-between h-[200px]">
+              <div className=" bg-white p-6 rounded-2xl transition duration-300 flex flex-col justify-between h-[260px] md:h-[200px]">
                 <p className="text-gray-600 text-lg font-medium italic mb-6">
                   “{t.message}”
                 </p>

@@ -126,7 +126,7 @@ const MyArtifacts = () => {
                   <td className="py-4 px-6 text-sm text-gray-600 font-medium">
                     {artifact.presentLocation}
                   </td>
-                  <td className="py-4 px-6 text-center">
+                  <td className="py-4 px-6 text-center flex flex-col md:flex-row gap-2">
                     <Link
                       to={`/updateArtifacts/${artifact._id}`}
                       className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#A37854] hover:bg-[#8a623e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 mr-3 transition duration-150 ease-in-out"
