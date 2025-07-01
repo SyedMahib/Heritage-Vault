@@ -14,6 +14,7 @@ import LikedArtifacts from "../Components/LikedArtifacts";
 import Error404 from "../Components/Error404";
 import TermsOfUse from "../Components/TermsOfUse";
 import PrivacyPolicy from "../Components/PrivacyPolicy";
+import CookiePolicy from "../Components/CookiePolicy";
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
       {
         path: "/privacyPolicy",
         element: <PrivacyPolicy></PrivacyPolicy>
+      },
+      {
+        path: "/cookiePolicy",
+        element: <CookiePolicy></CookiePolicy>
       }
     ],
   },
