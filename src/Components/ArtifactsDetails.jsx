@@ -21,6 +21,7 @@ const ArtifactsDetails = () => {
     shortDescription,
     addedBy,
     adderEmail,
+    foundingLocation
   } = artifactData;
 
   const { user } = use(AuthContext);
@@ -104,17 +105,20 @@ const ArtifactsDetails = () => {
         <div>
           <h3 className="font-bold text-[#1F1F1F]">Artifact Details</h3>
           <ul className="mt-2 space-y-2">
-            <li className="text-[#5A5A5A] font-medium">
-              <strong>Created At:</strong> {createdAt}
+             <li className="text-[#5A5A5A] font-medium">
+              <strong>Founded in :</strong> {foundingLocation}
             </li>
             <li className="text-[#5A5A5A] font-medium">
-              <strong>Discovered At:</strong> {discoveredAt}
+              <strong>Created At :</strong> {createdAt}
             </li>
             <li className="text-[#5A5A5A] font-medium">
-              <strong>Discovered By:</strong> {discoveredBy}
+              <strong>Discovered At :</strong> {discoveredAt}
             </li>
             <li className="text-[#5A5A5A] font-medium">
-              <strong>Current Location:</strong> {presentLocation}
+              <strong>Discovered By :</strong> {discoveredBy}
+            </li>
+            <li className="text-[#5A5A5A] font-medium">
+              <strong>Current Location :</strong> {presentLocation}
             </li>
           </ul>
         </div>

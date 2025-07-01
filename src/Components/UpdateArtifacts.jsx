@@ -15,6 +15,7 @@ const UpdateArtifacts = () => {
     discoveredAt,
     discoveredBy,
     presentLocation,
+    foundingLocation,
   } = useLoaderData();
 
   const { user, axiosSecure } = use(AuthContext);
@@ -147,6 +148,20 @@ const UpdateArtifacts = () => {
               type="text"
               defaultValue={discoveredBy}
               name="discoveredBy"
+              className="mt-1 w-full border rounded-md px-3 py-2"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block font-medium text-gray-700">
+              Founded In
+            </label>
+            <input
+              type="text"
+              defaultValue={foundingLocation}
+              name="foundingLocation"
+              placeholder="e.g. Baghdad, Iraq"
               className="mt-1 w-full border rounded-md px-3 py-2"
               required
             />

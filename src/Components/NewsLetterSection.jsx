@@ -16,7 +16,7 @@ const NewsLetterSection = () => {
   };
 
   return (
-    <section className="bg-[#f7f1e2] py-16 px-4 md:px-8">
+    <section className="bg-[#f7f1e2] py-16 md:px-8">
       {" "}
       
       <div className="container mx-auto text-center max-w-7xl p-10">

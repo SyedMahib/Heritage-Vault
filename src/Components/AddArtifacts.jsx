@@ -16,27 +16,29 @@ const AddArtifacts = () => {
 
     // send it to db
 
-    axiosSecure.post("/Artifacts", newArtifact).then((res) => {
-      if (res.data.insertedId) {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Artifacts added successfully!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate("/allArtifacts");
-      }
-    })
-    .catch((err) => {
-      Swal.fire({
+    axiosSecure
+      .post("/Artifacts", newArtifact)
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
             position: "top-end",
-            icon: "error",
-            title: `${err.message}`,
+            icon: "success",
+            title: "Artifacts added successfully!",
             showConfirmButton: false,
             timer: 1500,
           });
-    })
+          navigate("/allArtifacts");
+        }
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${err.message}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
 
   return (
@@ -121,6 +123,19 @@ const AddArtifacts = () => {
             <input
               type="text"
               name="discoveredBy"
+              className="mt-1 w-full border rounded-md px-3 py-2"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block font-medium text-gray-700">
+              Founded In
+            </label>
+            <input
+              type="text"
+              name="foundingLocation"
+              placeholder="e.g. Baghdad, Iraq"
               className="mt-1 w-full border rounded-md px-3 py-2"
               required
             />
