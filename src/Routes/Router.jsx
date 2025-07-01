@@ -12,6 +12,7 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import UpdateArtifacts from "../Components/UpdateArtifacts";
 import LikedArtifacts from "../Components/LikedArtifacts";
 import Error404 from "../Components/Error404";
+import TermsOfUse from "../Components/TermsOfUse";
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/termsOfUse",
+        element: <TermsOfUse></TermsOfUse>
+      }
     ],
   },
   {
