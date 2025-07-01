@@ -86,7 +86,7 @@ const LikedArtifacts = () => {
               <div className="mt-auto pt-6 text-right">
                 <Link
                   to={`/artifacts/${artifact._id}`}
-                  className="bg-[#A37854] hover:bg-[#8a623e] text-white font-bold py-2 px-4 rounded-full transition-colors duration-200"
+                  className="bg-[#A37854] hover:bg-[#8a623e] text-white font-bold py-2 px-4 rounded-full transition-all duration-300 ease-in-out hover:scale-105"
                 >
                   View Details
                 </Link>

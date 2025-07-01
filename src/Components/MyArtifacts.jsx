@@ -128,13 +128,13 @@ const MyArtifacts = () => {
                   <td className="py-4 px-6 text-center flex flex-col md:flex-row gap-2">
                     <Link
                       to={`/updateArtifacts/${artifact._id}`}
-                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#A37854] hover:bg-[#8a623e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 mr-3 transition duration-150 ease-in-out"
+                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#A37854] hover:bg-[#8a623e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 mr-3 transition-all duration-300 ease-in-out hover:scale-105"
                     >
                       Update
                     </Link>
                     <button
                       onClick={() => handleDelete(artifact._id)}
-                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out"
+                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300 ease-in-out hover:scale-105"
                     >
                       Delete
                     </button>

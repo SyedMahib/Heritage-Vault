@@ -207,7 +207,7 @@ const AddArtifacts = () => {
 
         <button
           type="submit"
-          className="bg-[#A37854] text-white px-6 py-2 rounded-md hover:bg-[#8a623e] transition"
+          className="bg-[#A37854] text-white px-6 py-2 rounded-md hover:bg-[#8a623e] transition-all duration-300 ease-in-out hover:scale-105"
         >
           Add Artifact
         </button>

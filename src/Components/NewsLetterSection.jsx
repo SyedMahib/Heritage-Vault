@@ -42,7 +42,7 @@ const NewsLetterSection = () => {
           />
           <button
             type="submit"
-            className="w-full sm:w-auto bg-[#A37854] hover:bg-[#8a623e] text-white font-bold py-3 px-6 rounded-md transition-colors duration-200 shadow-md"
+            className="w-full sm:w-auto bg-[#A37854] hover:bg-[#8a623e] text-white font-bold py-3 px-6 rounded-md transition-all duration-300 ease-in-out hover:scale-105 shadow-md"
           >
             Subscribe Now
           </button>

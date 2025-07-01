@@ -66,7 +66,7 @@ const ArtifactsDetails = () => {
     <div className="max-w-4xl mx-auto mt-5">
       <Link
         to="/allArtifacts"
-        className="btn bg-[#A37854] hover:bg-[#8a623e] text-white font-bold rounded-md transition-all duration-300 ease-in-out hover:scale-105 shadow-md"
+        className="btn bg-[#A37854] hover:bg-[#8a623e] text-white font-bold rounded-md transition-all duration-300 ease-in-out hover:scale-105 shadow-md ms-4 lg:ms-0"
       >
         <FaArrowLeft />
         Go Back
