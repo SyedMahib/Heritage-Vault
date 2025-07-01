@@ -48,6 +48,16 @@ const Navbar = () => {
           Add Artifacts
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            `relative pb-1 ${isActive ? "nav-link-active" : "nav-link-hover"}`
+          }
+          to="/about"
+        >
+          About Us
+        </NavLink>
+      </li>
     </>
   );
 

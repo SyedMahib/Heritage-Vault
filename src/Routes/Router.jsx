@@ -15,6 +15,7 @@ import Error404 from "../Components/Error404";
 import TermsOfUse from "../Components/TermsOfUse";
 import PrivacyPolicy from "../Components/PrivacyPolicy";
 import CookiePolicy from "../Components/CookiePolicy";
+import AboutUs from "../Components/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
         path: "/allArtifacts",
         loader: () => fetch("https://a-11-server-side-peach.vercel.app/artifacts"),
         element: <AllArtifacts></AllArtifacts>,
+      },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>
       },
       {
         path: "/artifacts/:id",
