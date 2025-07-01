@@ -3,7 +3,10 @@ import React from "react";
 const TermsOfUse = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-10 text-gray-800">
-      <h1 className="text-3xl font-bold mb-6">Terms of Use</h1>
+      <h1 className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-8 relative">
+          Terms Of Use
+          <span className="block w-24 h-1 bg-[#A37854] mx-auto mt-4 rounded-full"></span>
+        </h1>
 
       <p className="mb-4">
         Welcome to HeritageVault. By accessing or using our website, you agree
@@ -13,12 +16,14 @@ const TermsOfUse = () => {
 
       <h2 className="text-xl font-semibold mt-8 mb-2">1. Use of Our Website</h2>
       <p className="mb-4">
-        You agree to use HeritageVault only for lawful purposes. You may not
-        use our site to upload or distribute any material that is harmful,
+        You agree to use HeritageVault only for lawful purposes. You may not use
+        our site to upload or distribute any material that is harmful,
         offensive, or infringes on the rights of others.
       </p>
 
-      <h2 className="text-xl font-semibold mt-6 mb-2">2. Intellectual Property</h2>
+      <h2 className="text-xl font-semibold mt-6 mb-2">
+        2. Intellectual Property
+      </h2>
       <p className="mb-4">
         All content, including text, images, and code on this site, is the
         property of HeritageVault or its content providers and is protected by
@@ -48,7 +53,10 @@ const TermsOfUse = () => {
       <h2 className="text-xl font-semibold mt-6 mb-2">6. Contact</h2>
       <p>
         If you have any questions about these Terms, please contact us at:{" "}
-        <a href="mailto:support@heritagevault.com" className="text-blue-500 underline">
+        <a
+          href="mailto:support@heritagevault.com"
+          className="text-blue-500 underline"
+        >
           support@heritagevault.com
         </a>
       </p>
