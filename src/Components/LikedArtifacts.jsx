@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthContext";
 import { Link } from "react-router";
+import Loader from "./Loader";
 
 const LikedArtifacts = () => {
   const { user, axiosSecure } = use(AuthContext);
@@ -19,14 +20,18 @@ const LikedArtifacts = () => {
 
   if (loading) {
     return (
-      <div className="text-center p-5 text-lg">Loading liked artifacts...</div>
+      <div className="text-center p-5 text-lg">
+        <Loader></Loader>
+      </div>
     );
   }
 
   if (likedArtifacts.length === 0) {
     return (
       <div className="text-center p-5 min-h-[calc(100vh-295px)]">
-        <h2 className="text-xl font-semibold">No Liked Artifacts Yet!</h2>
+        <h2 className="text-xl font-semibold min-h-screen">
+          No Liked Artifacts Yet!
+        </h2>
         <p className="mt-2 text-gray-600">
           Go explore and like some amazing heritage artifacts to see them here.
         </p>
@@ -45,7 +50,7 @@ const LikedArtifacts = () => {
         {likedArtifacts.map((artifact) => (
           <div
             key={artifact._id}
-            className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-300 border border-[#A37854] mb-3"
+            className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-300 border border-[#A37854] mb-3 flex flex-col"
           >
             {artifact.artifactImage && (
               <img
@@ -54,7 +59,9 @@ const LikedArtifacts = () => {
                 className="w-full h-48 object-cover"
               />
             )}
-            <div className="p-6">
+
+            {/* Card content wrapper */}
+            <div className="p-6 flex flex-col flex-1">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 {artifact.artifactName}
               </h3>
@@ -74,7 +81,9 @@ const LikedArtifacts = () => {
                   {artifact.addedBy || "N/A"}
                 </p>
               </div>
-              <div className="mt-6 text-right">
+
+              {/* Push button to bottom */}
+              <div className="mt-auto pt-6 text-right">
                 <Link
                   to={`/artifacts/${artifact._id}`}
                   className="bg-[#A37854] hover:bg-[#8a623e] text-white font-bold py-2 px-4 rounded-full transition-colors duration-200"
@@ -91,3 +100,5 @@ const LikedArtifacts = () => {
 };
 
 export default LikedArtifacts;
+
+// transition-transform transform hover:scale-105 duration-300

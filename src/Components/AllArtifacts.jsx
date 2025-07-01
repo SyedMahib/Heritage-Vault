@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ArtifactsCard from "./ArtifactsCard";
+import Loader from "./Loader";
 
 const AllArtifacts = () => {
   const [allArtifacts, setAllArtifacts] = useState([]);
@@ -39,7 +40,7 @@ const AllArtifacts = () => {
   };
 
   if (loading) {
-    return <div className="text-center p-8">Loading artifacts...</div>;
+    return <div className="text-center p-8 min-h-screen"><Loader></Loader></div>;
   }
 
   if (error) {
@@ -73,7 +74,7 @@ const AllArtifacts = () => {
         </div>
 
         {allArtifacts.length === 0 ? (
-          <div className="text-center text-gray-600 text-lg">
+          <div className="text-center text-gray-600 text-lg min-h-screen">
             No artifacts found matching your search.
           </div>
         ) : (
