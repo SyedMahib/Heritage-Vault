@@ -20,10 +20,6 @@ const ArtifactsCard = ({ artifact }) => {
     }
   };
 
-  const handleDetailsClick = () => {
-    window.scrollTo(0, 0);
-  };
-
   return (
     <motion.div
       className="bg-white rounded-xl shadow-lg overflow-hidden border border-[#A37854] flex flex-col h-full"
@@ -55,7 +51,7 @@ const ArtifactsCard = ({ artifact }) => {
         </p>
 
         <div className="mt-auto">
-          <Link onClick={handleDetailsClick} to={`/artifacts/${artifact._id}`}>
+          <Link to={`/artifacts/${artifact._id}`}>
             <motion.button
               className="w-full bg-[#A37854] text-white py-3 rounded-lg font-semibold hover:bg-[#8a623e] transition-colors"
               whileTap={{ scale: 0.95 }}
