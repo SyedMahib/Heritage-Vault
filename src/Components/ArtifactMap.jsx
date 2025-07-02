@@ -145,7 +145,7 @@ const artifacts = [
 
 export default function ArtifactMap() {
   return (
-    <div className="my-25">
+    <div className="my-25 mx-5 md:mx-0">
       <h2 className="text-3xl md:text-5xl font-bold text-[#1F1F1F] mb-10 text-center ">
         Artifacts Discovery Map
         <span className="block w-[200px] h-1 bg-[#A37854] mx-auto mt-4 rounded-full"></span>
@@ -155,7 +155,7 @@ export default function ArtifactMap() {
           center={[40, 80]}
           zoom={4}
           minZoom={3}
-          scrollWheelZoom={true}
+          scrollWheelZoom={false}
           className="w-full h-full"
         >
           <TileLayer
