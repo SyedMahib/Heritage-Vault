@@ -143,7 +143,7 @@ const artifacts = [
   },
 ];
 
-export default function ArtifactMap() {
+ const ArtifactMap = () => {
   return (
     <div className="my-25 mx-5 md:mx-0">
       <h2 className="text-3xl md:text-5xl font-bold text-[#1F1F1F] mb-10 text-center ">
@@ -155,14 +155,16 @@ export default function ArtifactMap() {
           center={[40, 80]}
           zoom={4}
           minZoom={3}
-          scrollWheelZoom={false}
+          scrollWheelZoom={true}
           className="w-full h-full"
         >
+          {/* Map type */}
           <TileLayer
             url="https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=cb09599cffda4e1485d5d995188e5a29"
             attribution='&copy; <a href="https://www.thunderforest.com/">Thunderforest</a>'
           />
 
+          {/* map marker */}
           {artifacts.map((artifact) => (
             <Marker key={artifact.id} position={artifact.location}>
               <Popup>
@@ -186,3 +188,5 @@ export default function ArtifactMap() {
     </div>
   );
 }
+
+export default ArtifactMap;

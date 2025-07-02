@@ -52,6 +52,8 @@ const LikedArtifacts = () => {
             key={artifact._id}
             className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-300 border border-[#A37854] mb-3 flex flex-col"
           >
+
+            {/* Card image */}
             {artifact.artifactImage && (
               <img
                 src={artifact.artifactImage}
@@ -60,7 +62,7 @@ const LikedArtifacts = () => {
               />
             )}
 
-            {/* Card content wrapper */}
+            {/* Card content */}
             <div className="p-6 flex flex-col flex-1">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 {artifact.artifactName}
@@ -82,7 +84,7 @@ const LikedArtifacts = () => {
                 </p>
               </div>
 
-              {/* Push button to bottom */}
+
               <div className="mt-auto pt-6 text-right">
                 <Link
                   to={`/artifacts/${artifact._id}`}

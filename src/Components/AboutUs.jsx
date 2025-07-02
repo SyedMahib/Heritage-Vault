@@ -1,7 +1,8 @@
 import React from "react";
-import { FaGlobe, FaHistory, FaUsers, FaBook } from "react-icons/fa";
+import { FaGlobe } from "react-icons/fa";
 import preservation from "../assets/preservation.jpg";
 import logo from "../assets/logo.png";
+import { Link } from "react-router";
 
 const AboutUs = () => {
   const teamMembers = [
@@ -38,7 +39,7 @@ const AboutUs = () => {
   return (
     <div className="bg-[#f7f1e2] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Hero Section */}
+        {/* Title */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#3a2c1a] mb-6">
             About Heritage Vault
@@ -95,7 +96,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Team Section */}
+        {/* Our Team Section */}
         <div className="mb-20">
           <h2 className="text-3xl font-bold text-center text-[#3a2c1a] mb-12">
             Our Team
@@ -125,7 +126,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* History Section */}
+        {/* History of Heritage-vault Section */}
         <div className="bg-white rounded-xl shadow-lg p-8 md:p-10 mb-20">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
@@ -156,7 +157,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
+        {/* last section */}
         <div className="text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-[#3a2c1a] mb-6">
             Join Our Mission
@@ -166,12 +167,9 @@ const AboutUs = () => {
             cultural heritage, there are many ways to get involved.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-[#A37854] text-white px-8 py-3 rounded-md hover:bg-[#8a623e] transition-colors">
+            <Link to="/contact" className="bg-[#A37854] text-white px-8 py-3 rounded-md hover:bg-[#8a623e] transition-colors">
               Contact Us
-            </button>
-            <button className="border border-[#A37854] text-[#A37854] px-8 py-3 rounded-md hover:bg-[#f0e6d6] transition-colors">
-              Volunteer
-            </button>
+            </Link>
           </div>
         </div>
       </div>

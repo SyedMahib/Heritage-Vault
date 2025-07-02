@@ -16,6 +16,7 @@ import TermsOfUse from "../Components/TermsOfUse";
 import PrivacyPolicy from "../Components/PrivacyPolicy";
 import CookiePolicy from "../Components/CookiePolicy";
 import AboutUs from "../Components/AboutUs";
+import ContactUs from "../Components/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -91,6 +92,10 @@ export const router = createBrowserRouter([
       {
         path: "/cookiePolicy",
         element: <CookiePolicy></CookiePolicy>
+      },
+      {
+        path: "/contact",
+        element: <ContactUs></ContactUs>
       }
     ],
   },

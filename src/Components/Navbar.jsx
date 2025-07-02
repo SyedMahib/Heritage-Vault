@@ -16,10 +16,15 @@ const Navbar = () => {
       });
   };
 
+  const handleNavClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   const navLinks = (
     <>
       <li>
         <NavLink
+         onClick={handleNavClick}
           className={({ isActive }) =>
             `relative pb-1 ${isActive ? "nav-link-active" : "nav-link-hover"}`
           }
@@ -30,6 +35,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+         onClick={handleNavClick}
           className={({ isActive }) =>
             `relative pb-1 ${isActive ? "nav-link-active" : "nav-link-hover"}`
           }
@@ -40,6 +46,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+         onClick={handleNavClick}
           className={({ isActive }) =>
             `relative pb-1 ${isActive ? "nav-link-active" : "nav-link-hover"}`
           }
@@ -50,12 +57,24 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+         onClick={handleNavClick}
           className={({ isActive }) =>
             `relative pb-1 ${isActive ? "nav-link-active" : "nav-link-hover"}`
           }
           to="/about"
         >
           About Us
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+         onClick={handleNavClick}
+          className={({ isActive }) =>
+            `relative pb-1 ${isActive ? "nav-link-active" : "nav-link-hover"}`
+          }
+          to="/contact"
+        >
+          Contact Us
         </NavLink>
       </li>
     </>
@@ -132,6 +151,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <NavLink
+                   onClick={handleNavClick}
                     className={({ isActive }) =>
                       `${isActive ? "font-bold text-[#A37854]" : "none"}`
                     }
@@ -142,6 +162,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <NavLink
+                   onClick={handleNavClick}
                     className={({ isActive }) =>
                       `${isActive ? "font-bold text-[#A37854]" : "none"}`
                     }

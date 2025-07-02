@@ -15,6 +15,11 @@ const DynamicTitle = () => {
       "/allArtifacts": "All Artifacts | Heritage Vault",
       "/myArtifacts": "My Artifacts | Heritage Vault",
       "/likedArtifatcs": "My Liked Artifacts | Heritage Vault",
+      "/about": "About Us | Heritage Vault",
+      "/contact": "Contact Us | Heritage Vault",
+      "/termsOfUse": "Terms Of Use | Heritage Vault",
+      "/privacyPolicy": "Privacy Policy | Heritage Vault",
+      "/cookiePolicy": "Cookie Policy | Heritage Vault"
     };
 
     if (titleMap[path]) {
