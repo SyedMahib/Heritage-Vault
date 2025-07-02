@@ -131,7 +131,7 @@ const ContactUs = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#A37854] hover:bg-[#8a6a4a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#A37854]"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#A37854] hover:bg-[#8a6a4a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#A37854] transition-all duration-300 ease-in-out hover:scale-105"
                 >
                   Send Message
                 </button>

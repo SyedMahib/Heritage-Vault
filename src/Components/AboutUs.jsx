@@ -167,7 +167,7 @@ const AboutUs = () => {
             cultural heritage, there are many ways to get involved.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/contact" className="bg-[#A37854] text-white px-8 py-3 rounded-md hover:bg-[#8a623e] transition-colors">
+            <Link to="/contact" className="bg-[#A37854] text-white px-8 py-3 rounded-md hover:bg-[#8a623e] transition-all duration-300 ease-in-out hover:scale-105">
               Contact Us
             </Link>
           </div>

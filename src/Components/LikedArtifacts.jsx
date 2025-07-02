@@ -11,20 +11,25 @@ const LikedArtifacts = () => {
   useEffect(() => {
     setLoading(true);
     axiosSecure
-      .get(`/artifacts/likedByUser?email=${user.email}`)
+      .get(`/artifacts/likedByUser?email=${user?.email}`)
       .then((res) => {
         setLikedArtifacts(res.data);
         setLoading(false);
-      });
+      })
+      .catch(() => setLoading(false));
   }, [user?.email, axiosSecure]);
 
   if (loading) {
     return (
       <div className="text-center p-5 text-lg">
-        <Loader></Loader>
+        <Loader />
       </div>
     );
   }
+
+  const handleViewClick = () => {
+    window.scrollTo(0, 0);
+  };
 
   if (likedArtifacts.length === 0) {
     return (
@@ -46,61 +51,61 @@ const LikedArtifacts = () => {
         <span className="block w-24 h-1 bg-[#A37854] mx-auto mt-4 rounded-full"></span>
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {likedArtifacts.map((artifact) => (
-          <div
-            key={artifact._id}
-            className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-300 border border-[#A37854] mb-3 flex flex-col"
-          >
-
-            {/* Card image */}
-            {artifact.artifactImage && (
-              <img
-                src={artifact.artifactImage}
-                alt={artifact.artifactName}
-                className="w-full h-48 object-cover"
-              />
-            )}
-
-            {/* Card content */}
-            <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {artifact.artifactName}
-              </h3>
-              <p className="text-gray-700 mb-4 text-base line-clamp-3">
-                {artifact.shortDescription}
-              </p>
-
-              <div className="space-y-2 text-gray-800 text-sm">
-                <p>
-                  <span className="font-semibold text-[#A37854]">Likes:</span>{" "}
-                  {artifact.likeCount || 0}
-                </p>
-                <p>
-                  <span className="font-semibold text-[#A37854]">
-                    Added By:
-                  </span>{" "}
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
+          <thead className="bg-[#A37854] text-white">
+            <tr>
+              <th className="py-3 px-4 text-left">Image</th>
+              <th className="py-3 px-4 text-left">Title</th>
+              <th className="py-3 px-4 text-left">Location Founded</th>
+              <th className="py-3 px-4 text-left">Added By</th>
+              <th className="py-3 px-4 text-left">Likes</th>
+              <th className="py-3 px-4 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {likedArtifacts.map((artifact) => (
+              <tr
+                key={artifact._id}
+                className="hover:bg-[#f7f1e2] transition-colors"
+              >
+                <td className="py-4 px-4">
+                  {artifact.artifactImage && (
+                    <img
+                      src={artifact.artifactImage}
+                      alt={artifact.artifactName}
+                      className="w-16 h-16 object-cover rounded"
+                    />
+                  )}
+                </td>
+                <td className="py-4 px-4 font-medium text-gray-900">
+                  {artifact.artifactName}
+                </td>
+                <td className="py-4 px-4 font-medium text-gray-900">
+                  {artifact.foundingLocation}
+                </td>
+                <td className="py-4 px-4 text-gray-700">
                   {artifact.addedBy || "N/A"}
-                </p>
-              </div>
-
-
-              <div className="mt-auto pt-6 text-right">
-                <Link
-                  to={`/artifacts/${artifact._id}`}
-                  className="bg-[#A37854] hover:bg-[#8a623e] text-white font-bold py-2 px-4 rounded-full transition-all duration-300 ease-in-out hover:scale-105"
-                >
-                  View Details
-                </Link>
-              </div>
-            </div>
-          </div>
-        ))}
+                </td>
+                <td className="py-4 px-4 text-gray-700">
+                  {artifact.likeCount || 0}
+                </td>
+                <td className="py-4 px-4">
+                  <Link
+                   onClick={handleViewClick}
+                    to={`/artifacts/${artifact._id}`}
+                    className="bg-[#A37854] hover:bg-[#8a623e] text-white font-medium py-2 px-5 rounded text-sm transition-all duration-300 ease-in-out hover:scale-105"
+                  >
+                    View
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
 
 export default LikedArtifacts;
-
-// transition-transform transform hover:scale-105 duration-300
