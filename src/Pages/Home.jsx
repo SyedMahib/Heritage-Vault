@@ -6,6 +6,7 @@ import Counter from "../Components/Counter";
 import Gallery from "../Components/Gallery";
 import OurGoal from "../Components/OurGoal";
 import NewsLetterSection from "../Components/NewsLetterSection";
+import ArtifactMap from "../Components/ArtifactMap";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
         <OurGoal></OurGoal>
         <Counter></Counter>
         <Gallery></Gallery>
+        <ArtifactMap></ArtifactMap>
         <Testimonials></Testimonials>
         <NewsLetterSection></NewsLetterSection>
       </main>
