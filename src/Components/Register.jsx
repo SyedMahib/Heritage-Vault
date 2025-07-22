@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import Swal from "sweetalert2";
 import { FaGoogle } from "react-icons/fa";
+import axios from "axios";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -14,66 +15,80 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const photo = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log({ name, photo, email, password });
+    const image = form.image.files[0];
 
     const passwordRegExp = /(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
-    if (passwordRegExp.test(password) === false) {
+    if (!passwordRegExp.test(password)) {
       setError(
-        "password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, and one number."
+        "Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, and one number."
       );
       return;
-    } else {
-      setError("");
     }
 
-    setError("");
+    // Upload image to ImgBB
+    const formData = new FormData();
+    formData.append("image", image);
 
-    // create user
-    createUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Created account successfully!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        updateUser({ displayName: name, photoURL: photo })
-          .then(() => {
-            setUser({ ...user, displayName: name, photoURL: photo });
-            navigate("/");
-          })
-          .catch((error) => {
-            setError(error.message);
-            setUser(user);
-            Swal.fire({
-              position: "top-end",
-              icon: "error",
-              title: `${error.message}`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
+    try {
+      const imgbbRes = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_IMGBB_API_KEY
+        }`,
+        formData
+      );
+
+      const photo = imgbbRes.data.data.url;
+
+      createUser(email, password)
+        .then((result) => {
+          const user = result.user;
+
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Created account successfully!",
+            showConfirmButton: false,
+            timer: 1500,
           });
-      })
-      .catch((error) => {
-        setError(error.message);
-        Swal.fire({
-          position: "top-end",
-          icon: "error",
-          title: `${error.message}`,
-          showConfirmButton: false,
-          timer: 1500,
+
+          updateUser({ displayName: name, photoURL: photo })
+            .then(() => {
+              setUser({ ...user, displayName: name, photoURL: photo });
+              navigate("/");
+            })
+            .catch((error) => {
+              setError(error.message);
+              setUser(user);
+              Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: `${error.message}`,
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            });
+        })
+        .catch((error) => {
+          setError(error.message);
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: `${error.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         });
-      });
+    } catch (err) {
+      setError("Image upload failed");
+      console.error(err);
+    }
   };
 
   const handleGoogleRegister = (e) => {
@@ -136,12 +151,12 @@ const Register = () => {
                 />
 
                 {/* Photo */}
-                <label className="label">PhotoURL</label>
+                <label className="label">Profile Photo</label>
                 <input
-                  type="text"
-                  name="photoURL"
-                  className="input"
-                  placeholder="Enter your Photo URL"
+                  type="file"
+                  name="image"
+                  accept="image/*"
+                  className="file-input file-input-bordered w-full"
                   required
                 />
 
@@ -165,7 +180,9 @@ const Register = () => {
                   required
                 />
                 {error && <p className="text-red-600 text-xs">{error}</p>}
-                <button className="btn text-white mt-4 bg-[#A37854] hover:bg-[#8a623e]">Register</button>
+                <button className="btn text-white mt-4 bg-[#A37854] hover:bg-[#8a623e]">
+                  Register
+                </button>
 
                 <p className="text-center mt-3 font-semibold text-sm">
                   Already have an account?{" "}
