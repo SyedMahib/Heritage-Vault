@@ -2,20 +2,57 @@ import React, { use } from "react";
 import { AuthContext } from "../Provider/AuthContext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 const AddArtifacts = () => {
   const { user, axiosSecure } = use(AuthContext);
 
   const navigate = useNavigate();
 
-  const handleAddArtifacts = (e) => {
+  const handleAddArtifacts = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const formData = new FormData(form);
-    const newArtifact = Object.fromEntries(formData.entries());
+    const imageFile = form.image.files[0];
 
-    // send it to db
+    // Step 1: Upload image to ImgBB
+    const formData = new FormData();
+    formData.append("image", imageFile);
 
+    let uploadedImageUrl = "";
+    try {
+      const res = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_IMGBB_API_KEY
+        }`,
+        formData
+      );
+      uploadedImageUrl = res.data.data.url;
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        title: "Image upload failed",
+        text: err.message,
+      });
+      return;
+    }
+
+    // Step 2: Construct artifact object
+    const newArtifact = {
+      artifactName: form.artifactName.value,
+      artifactImage: uploadedImageUrl,
+      artifactType: form.artifactType.value,
+      createdAt: form.createdAt.value,
+      discoveredAt: form.discoveredAt.value,
+      discoveredBy: form.discoveredBy.value,
+      foundingLocation: form.foundingLocation.value,
+      presentLocation: form.presentLocation.value,
+      shortDescription: form.shortDescription.value,
+      historicalContext: form.historicalContext.value,
+      addedBy: user.displayName,
+      adderEmail: user.email,
+    };
+
+    // Step 3: Send to backend
     axiosSecure
       .post("/Artifacts", newArtifact)
       .then((res) => {
@@ -67,9 +104,10 @@ const AddArtifacts = () => {
               Artifact Image URL
             </label>
             <input
-              type="url"
-              name="artifactImage"
-              className="mt-1 w-full border rounded-md px-3 py-2"
+              type="file"
+              name="image"
+              accept="image/*"
+              className="file-input file-input-bordered w-full"
               required
             />
           </div>
